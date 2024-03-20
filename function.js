@@ -476,7 +476,13 @@ const excuses = [
 exports.randomExcuse = (req, res) => {
     // Get a random index within the length of the excuses array
     const randomIndex = Math.floor(Math.random() * excuses.length);
+    const response = {
+	excuse: excuses[randomIndex]
+    };
 
-    // Send the random excuse as the response
-    res.send(excuses[randomIndex]);
+    // Set the content type to JSON
+    res.set('Content-Type', 'application/json');
+
+    // Send the JSON response
+    res.send(response);
 };
